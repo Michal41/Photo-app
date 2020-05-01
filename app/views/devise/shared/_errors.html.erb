@@ -1,0 +1,30 @@
+<% if obj.errors.any? %>
+  
+
+
+
+	<div class="mw9 center ph3-ns">	
+		<div class="cf ph2-ns">
+			<div class="fl w-20 w-20-ns pa2">			
+			</div>
+			<div class="fl w-60 w-60-ns pa2">			
+				<div class="items-center justify-center pa4 alert black tc b">
+					<svg class="w2" data-icon="info" viewBox="0 0 32 32" style="fill:currentcolor">
+						<title>info icon</title>
+						<path d="M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6"></path>
+					</svg>
+					<div class="lh-title ml3 f3 din inline-flex"> <%= pluralize(obj.errors.count,"error")%> prohibit user from being created </div>
+					<div class='tc ml5 f4'>
+						<ul style="list-style-position: inside;">
+							<% obj.errors.full_messages.each do |msg| %>
+								<li class="pr6"><%= msg %> </li>
+							<% end %>		
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="fl w-20 w-20-ns pa2">			
+			</div>
+		</div>
+	</div>   
+<% end %>

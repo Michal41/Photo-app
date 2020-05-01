@@ -1,0 +1,23 @@
+<header class="bg-white black-80 tc pv4">
+	<%= link_to root_path, class:'no-underline black-80' do %>
+		<div class='moon-gray'><%= fa_icon "camera-retro 4x cblue" %></div>
+		<h1 class="mt2 mb0 baskerville i fw1 f1 grow-large">Photo app</h1>
+	<% end %>
+  
+<nav class="bt bb tc mw7 center mt4">
+    <a class="f6 f5-ns link bg-animate black-80 hover-bg-moon-gray dib pa3 ph4-l grow-large" href="/portfolio">Portfolio</a>
+    
+    <a class="f6 f5-ns link bg-animate black-80 hover-bg-moon-gray dib pa3 ph4-l grow-large" href="/portfolio">Portfolio</a>
+    <a class="f6 f5-ns link bg-animate black-80 hover-bg-moon-gray dib pa3 ph4-l grow-large" href="/portfolio">Portfolio</a>
+    <% if user_signed_in? %>
+        <%= link_to 'Edit account', edit_user_registration_path, :class => "f6 f5-ns link bg-animate black-80 hover-bg-moon-gray dib pa3 ph4-l grow-large" %>
+    	<%= link_to 'Logout', destroy_user_session_path, method: :delete,:class => "f6 f5-ns link bg-animate black-80 hover-bg-moon-gray dib pa3 ph4-l grow-large" %>
+    <% else %>
+    	<%= link_to 'Login', new_user_session_path, :class => "f6 f5-ns link bg-animate black-80 hover-bg-moon-gray dib pa3 ph4-l grow-large" %>
+
+    	<%= link_to "Sign up", new_user_registration_path, :class => "f6 f5-ns link bg-animate black-80 hover-bg-moon-gray dib pa3 ph4-l grow-large" %>
+    <% end %>
+
+</nav>
+</header>
+

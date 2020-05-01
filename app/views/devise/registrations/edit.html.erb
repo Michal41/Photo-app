@@ -1,0 +1,77 @@
+
+<%= render 'layouts/errors', obj:@user %>
+<div class="mw9 center ph3-ns">
+  <div class="cf ph2-ns">
+    <div class="fl w-20 w-20-ns pa2">
+    </div>
+    <div class="fl w-60 w-60-ns pa2">
+      <div class="bg-white pv4">        
+        <main class="pa4 pt0 black-80">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+            <legend class="f2 i fw6 ph0 mh0 tc gray grow-large">Sign in</legend>
+            <div class="mt3">
+              <%= f.label :email, class: "db fw6 lh-copy f4" %>
+              <%= f.email_field :email, class: "pa2 input-reset ba bg-transparent hover-bg-moon-gray hover-white w-100", type:"email" %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+            </div>
+            <div class="mv3">
+              <%= f.label :password, class:"db fw6 lh-copy f4" %>
+              <i>(leave blank if you don't want to change it)</i><br />
+              <%= f.password_field :password, class:"b pa2 input-reset ba bg-transparent hover-bg-moon-gray hover-white w-100", autocomplete: "new-password" %>
+            </div>
+
+
+            <div class="mv3">
+              
+              <%= f.label :password_confirmation, class:"db fw6 lh-copy f4" %>
+              
+
+              <%= f.password_field :password_confirmation, class:"b pa2 input-reset ba bg-transparent hover-bg-moon-gray hover-white w-100",  autocomplete: "new-password" %>
+            </div>
+
+
+
+            <div class="mv3">
+              
+              <%= f.label :current_password, class:"db fw6 lh-copy f4" %>
+              <i>(we need your current password to confirm your changes)</i><br />
+
+             
+              <%= f.password_field :current_password, class:"b pa2 input-reset ba bg-transparent hover-bg-moon-gray hover-white w-100", autocomplete: "current-password" %>
+            </div>
+
+
+
+
+
+            <label class="pa0 ma0 lh-copy f5 pointer fw6"><%= f.check_box :remember_me %> Remember me</label>
+
+          </fieldset>
+
+          <%= f.submit "Update", :class => 'f2 br4 link ph3 pv2 mb2 dib black-70 bg-moon-gray hover-bg-green shadow-hover grow-large' %>
+
+          <div class="lh-copy mt3">
+            <a href="#0" class="f6 link dim black db">Sign up</a>
+            <a href="#0" class="f6 link dim black db">Forgot your password?</a>
+          </div>
+          <% end %>
+        </main>
+      </div>
+    </div> 
+    <div class="fl w-20 w-20-ns pa2">
+    </div>
+  </div>
+</div>
+<%= render "devise/shared/links" %>
+
+
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
+

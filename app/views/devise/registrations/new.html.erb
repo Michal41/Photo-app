@@ -1,0 +1,38 @@
+ <%= render 'layouts/errors', obj:@user %>
+<div class="mw9 center ph3-ns">
+  <div class="cf ph2-ns">
+    <div class="fl w-20 w-20-ns pa2">
+    </div>
+    <div class="fl w-60 w-60-ns pa2">
+      <div class="bg-white pv4">        
+        <main class="pa4 pt0 black-80">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %> 
+          <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+            <legend class="f2 i fw6 ph0 mh0 tc gray grow-large">Sign up</legend>
+            <div class="mt3">
+              <%= f.label :email, class: "db fw6 lh-copy f4" %>
+              <%= f.email_field :email, class: "pa2 input-reset ba bg-transparent hover-bg-moon-gray hover-white w-100", type:"email" %>
+            </div>
+            <div class="mv3">
+              <%= f.label :password,class:"db fw6 lh-copy f4" %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password", class:"b pa2 input-reset ba bg-transparent hover-bg-moon-gray hover-white w-100" %>
+
+
+              <%= f.label :password_confirmation,class:"db fw6 lh-copy f4" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"b pa2 input-reset ba bg-transparent hover-bg-moon-gray hover-white w-100" %>
+
+          </fieldset>
+
+          <%= f.submit 'Sign up', :class => 'f2 br4 link ph3 pv2 mb2 dib black-70 bg-moon-gray hover-bg-green shadow-hover grow-large' %>
+          <% end %>
+        </main>
+      </div>
+    </div> 
+    <div class="fl w-20 w-20-ns pa2">
+    </div>
+  </div>
+</div>
+<%= render "devise/shared/links" %>
