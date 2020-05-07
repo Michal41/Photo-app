@@ -1,43 +1,34 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 mt-4 text-center">
-      <h2>You successfully linked a credit card to your account</h2>
-    </div>    
-  </div>
+<div class="mw9 center ph3-ns">
+  <div class="cf ph2-ns">
+    <div class="fl w-10 w-10-ns pa2">
+    </div>
+    <div class="fl w-80 w-80-ns pa2">
+      <article class="mw7 center ph3 ph5-ns tc br2 pv5 bg-washed-green dark-green mb5">
+        <h1 class="fw6 f3 f2-ns lh-title mt0 mb3">
+          You successfully linked a credit card to your account
+        </h1>
+        <h2 class="fw2 f3 lh-copy mt0 mb3">
+          Click the button below to activate your subscription
+        </h2>
+        <div>
+          <%=form_tag subscribe_path, method: :post do %>
+
+            <%= submit_tag 'Subscribe', class: "f2 br-pill bg-dark-green no-underline washed-green ba b--dark-green grow pv2 ph3 dib mr3" %>
+
+          <% end %>
 
 
 
-<div class="row">
-  <div class="col-md-12 mt-3 text-center">
-    <h3>Now you need to choose your plan</h3>
-  </div>
-</div>
-<!-- creating a form -->
-<%=form_tag subscribe_path, method: :post do %>
-<div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4 text-center">
-    <div class="form-group">
-      <select class="form-control" name="plan_id">
-        <% @plans.each do |plan| %>
-        <option value="<%= plan.id %>"><%= plan.amount/100 %>/€ <%= plan.nickname %></option>
-        <!-- we pass id chosen by custmer as a value  to use it for subscription -->
-        <%end%>
-      </select>
+
+        </div>
+      </article>
+    </div>
+    <div class="fl w-10 w-10-ns pa2">
     </div>
   </div>
-  <div class="col-md-4"></div>
 </div>
-<div class="row">
-  <div class="col-md-12 mt-2 text-center">
-    <%= submit_tag 'Save changes', class: "btn btn-primary" %>
-  </div>
-</div>
-<% end %>
 
 
 
 
 
-
-</div>

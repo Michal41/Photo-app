@@ -39,8 +39,18 @@
 				<li>
 					Accces anywhere
 				</li>
-				<a class="f6 fw6 grow no-underline br3 ph4 pv2 mt4 dib white bg-blue ml3" href="#0">Sign up</a>
- 
+ 				
+ 				<% if user_signed_in? %>
+ 					<%= form_tag create_payment_method_path, id: "billing-create-payment-method" do  %>
+        				<%= link_to "Subscribe", add_payment_method_path(:price_plan =>'premium'), remote: true, class: "f6 fw6 grow no-underline br3 ph4 pv2 mt4 dib white bg-blue ml3" %>
+      				<% end %>
+      			<%else%>
+      				<%= link_to 'Login', new_user_session_path, class: "f6 fw6 grow no-underline br3 ph4 pv2 mt4 dib white bg-blue ml3"%>
+      			<% end %>
+
+
+
+
 			</ul>
 
 		</div>
@@ -63,8 +73,21 @@
 					Unlimited projects
 				</li>
 			</ul>
-			<a class="f6 fw6 grow no-underline br3 ph4 pv2 mb3 mt3 dib white bg-blue ml3" href="#0">Sign up</a>
- 
+			
+
+			
+
+			<% if user_signed_in? %>
+				<%= form_tag create_payment_method_path, id: "billing-create-payment-method" do  %>
+        			<%= link_to "Subscribe", add_payment_method_path(:price_plan =>'amaze'), remote: true, class: "f6 fw6 grow no-underline br3 ph4 pv2 mb3 mt3 dib white bg-blue ml3" %>
+      			<% end %>
+      		<% else %>
+      			<%= link_to 'Login', new_user_session_path, class: "f6 fw6 grow no-underline br3 ph4 pv2 mb3 mt3 dib white bg-blue ml3"%>
+      		<% end %>
+
+
+
+
 		</div>
 
 

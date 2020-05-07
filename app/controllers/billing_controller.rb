@@ -1,10 +1,9 @@
 class BillingController < ApplicationController
 	
-	def index
-		@user=current_user.email
-	end
-
 	def new_card
+    calncel_subscribe
+    plans={"amaze"=>"plan_HEhEJFcIvGOGJl", "premium"=>"plan_HD6dXTwncCSYqo"}
+    session[:plan_id]=plans[params[:price_plan]]
     respond_to do |format|
       format.js
     end
@@ -55,15 +54,19 @@ class BillingController < ApplicationController
         subscription.delete
       end
       #we delete all subscription that the customer has. We do this because we don't want that our customer to have multiple subscriptions
-
-      plan_id = params[:plan_id]
+      plan_id = session[:plan_id]
+      session[:plan_id] = ""
       subscription = Stripe::Subscription.create({
                                                      customer: customer,
                                                      items: [{plan: plan_id}], })
    #we are creating a new subscription with the plan_id we took from our form
 
-      subscription.save
-      redirect_to success_path
+      if subscription.save
+        flash["notice"]='your subscription was succesfuly added'
+        redirect_to root_path
+      else
+        flash['alert']='error'
+      end
   end
 
   def calncel_subscribe
@@ -71,10 +74,8 @@ class BillingController < ApplicationController
   	
   	subscriptions = Stripe::Subscription.list(customer: customer.id)
     subscriptions.each do |subscription|
-      #subscription.delete
+      subscription.delete
    	end
-   	puts '-------------------------------'
-   	puts subscribe_activate? 
   end
 
 
