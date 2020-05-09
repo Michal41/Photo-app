@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :images
   devise_for :users
   root 'welcome#index' 
   get '/card/new' => 'billing#new_card', as: :add_payment_method
