@@ -1,4 +1,4 @@
-<%= form_with(multipart: true, model: image, local: true) do |form| %>
+ <%= form_with(multipart: true, model: image, local: true) do |form| %>
   <% if image.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
@@ -27,3 +27,62 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+
+
+
+<div class="mw9 center ph3-ns">
+  <div class="cf ph2-ns">
+    <div class="fl w-20 w-20-ns pa2">
+    </div>
+    <div class="fl w-60 w-60-ns pa2">
+      <div class="bg-white pv4">        
+        <main class="pa4 pt0 black-80">
+          <%= form_with(multipart: true, model: image, local: true, class: "pa4 black-80") do |form| %>
+            <% if image.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+                <ul>
+                  <% image.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div>              
+              <%= form.label :name, 'Name for your image', class:"f3 fw6 i db mb2 tc" %>
+              <%= form.text_field :name, class: "input-reset ba b--black-20 pa2 mb2 db w-100" %>
+
+              <small id="name-desc" class="f6 black-60 db mb2">Enter the name of your picture</small>
+            </div>
+            
+              
+              
+            <%= form.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+                
+              
+
+            <div class='tc'>
+
+              <%= form.submit "Save image", :class=> "f3 fw6 grow no-underline br3 ph4 pv2 mt4 dib white bg-blue ml4 bn shadow-hover" %>
+            </div>
+          <% end %>
+        </main>
+      </div>
+      <div class="fl w-20 w-20-ns pa2">
+      </div>
+    </div>
+  </div>
+
+
+<script type="text/javascript">
+  alert('Maximum file size is 5MB.');
+  $('#image_picture').bind('change',function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5){
+      alert('Maximum file size is 5MB.');
+    }
+  });
+</script>
+

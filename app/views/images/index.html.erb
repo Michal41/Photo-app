@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Images</h1>
-
+<h1 class="tc f2 fw9 black tracked">Images</h1>
+<!--
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Picture</th>
-      <th>User</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +15,9 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= image.name %></td>
-        <td><%= image.picture %></td>
-        <td><%= image.user_id %></td>
+        <td><%= link_to image.name, image_path(image) %></td>
+        <td><%= image_tag(image.picture.url, size: "100x100") if image.picture? %></td>
+
         <td><%= link_to 'Show', image %></td>
         <td><%= link_to 'Edit', edit_image_path(image) %></td>
         <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,5 +27,66 @@
 </table>
 
 <br>
+!-->
 
-<%= link_to 'New Image', new_image_path %>
+<div class="tc">
+<%= link_to 'New Image', new_image_path, class: "f6 fw6 grow no-underline br3 ph4 pv2 mb4 dib white bg-blue"%>
+</div>
+
+<div class="mw9 center ph3-ns">
+  <div class="cf ph2-ns">
+    <div class="fl w-10 w-10-ns pa2">
+    </div>
+    <div class="fl w-80 w-80-ns pa2 bg-light-gray br4">
+
+
+
+
+      <div class="overflow-auto center mw-80">
+        <table class="f6 w-100 mw8 center mt3" cellspacing="0">
+          <tbody class="lh-copy collapse">
+            <tr>
+              <th class="bb tl pb3 pr3 f4 fw9 black tracked">Name</th>
+              <th class="bb tl pb3 pr3 f4 fw9 black tracked">Pictures</th>
+              <th class="bb tl pb3 pr3 f4 fw9 black tracked"></th>
+              <th class="bb tl pb3 pr3 f4 fw9 black tracked">Actions</th>
+            </tr>
+            <% @images.each do |image| %>
+              <tr>
+                <td class="pv3 pr3 bb b--black-20 ">
+                  <%= link_to image.name, image_path(image), class: "no-underline f4 fw9 black tracked" %></td>
+                <td class="pv3 pr3 bb b--black-20"><%= image_tag(image.picture.url, size: "100x100") if image.picture? %></td>
+                <td class="pv3 pr3 bb b--black-20"></td>
+                <td class="pv3 pr3 bb b--black-20">
+                  <%= link_to 'Show', image %>
+                  <%= link_to 'Edit', edit_image_path(image) %>
+                  <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    
+    <div class="fl w-10 w-10-ns pa2">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
